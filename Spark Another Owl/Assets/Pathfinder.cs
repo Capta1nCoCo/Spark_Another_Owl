@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour
 {
+    [SerializeField] Waypoint startWaypoint, endWaypoint;
 
     Dictionary<Vector2Int, Waypoint> grid = new Dictionary<Vector2Int, Waypoint>();
-    
+
     // Start is called before the first frame update
     void Start()
     {
         LoadBlocks();
+        ColourStartAndEnd();
+    }
+
+    private void ColourStartAndEnd()
+    {
+        startWaypoint.SetTopColour(Color.green);
+        endWaypoint.SetTopColour(Color.red);
     }
 
     private void LoadBlocks()
@@ -27,9 +35,9 @@ public class Pathfinder : MonoBehaviour
             else
             {
                 grid.Add(gridPos, waypoint);
+                
             }            
         }
-        print("Loaded " + grid.Count + " blocks");
     }
-   
+    
 }

@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
+
     Vector2Int gridPos;
    
     const int gridSize = 10;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public int GetGridSize()
     {
@@ -27,9 +22,30 @@ public class Waypoint : MonoBehaviour
         );
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetTopColour(Color color)
     {
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        topMeshRenderer.material.color = color;
+    }
+
+    // My solution:
+    public void MySetTopColour(Color color)
+    {
+        MeshRenderer topMeshRenderer = transform.Find("Top").GetComponent<MeshRenderer>();
+        if (gameObject.tag == "start")
+        {
+            topMeshRenderer.material.color = Color.red;
+        }
+        else if (gameObject.tag == "end")
+        {
+            topMeshRenderer.material.color = Color.green;
+        }
+        else
+        {
+            topMeshRenderer.material.color = color;
+        }
         
     }
-}
+    
+
+}   
