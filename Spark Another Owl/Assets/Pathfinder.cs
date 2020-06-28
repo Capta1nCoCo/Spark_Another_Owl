@@ -86,7 +86,9 @@ public class Pathfinder : MonoBehaviour
     private void ColourStartAndEnd()
     {
         startWaypoint.SetTopColour(Color.green);
+        startWaypoint.isStart = true;
         endWaypoint.SetTopColour(Color.red);
+        endWaypoint.isEnd = true;
     }
 
     private void LoadBlocks()
