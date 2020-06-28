@@ -11,6 +11,7 @@ public class Pathfinder : MonoBehaviour
     Queue<Waypoint> queue = new Queue<Waypoint>();
     bool isRunning = true; 
     Waypoint searchCenter;
+    List<Waypoint> path = new List<Waypoint>();
 
     Vector2Int[] directions = {
         Vector2Int.up,
@@ -19,15 +20,30 @@ public class Pathfinder : MonoBehaviour
         Vector2Int.left
     };
 
-    // Start is called before the first frame update
-    void Start()
+    public List<Waypoint> GetPath()
     {
         LoadBlocks();
-        ColourStartAndEnd();        
-        Pathfind();
+        ColourStartAndEnd();
+        BreadthFirstSearch();
+        FormPath();
+        return path;
     }
 
-    private void Pathfind()
+    private void FormPath()
+    {
+        path.Add(endWaypoint);
+
+        Waypoint previous = endWaypoint.exploredFrom;
+        while(previous != startWaypoint)
+        {
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        path.Add(startWaypoint);
+        path.Reverse();
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startWaypoint);
 
@@ -38,8 +54,6 @@ public class Pathfinder : MonoBehaviour
             ExploreNeighbours();
             searchCenter.isExplored = true;
         }
-        // todo work-out path!
-        print("Finished pathfinding?");
     }
 
     private void HaltIfEndFound()
@@ -57,14 +71,10 @@ public class Pathfinder : MonoBehaviour
         foreach (Vector2Int direction in directions)
         {
             Vector2Int neighbourCoordinates = searchCenter.GetGridPos() + direction;
-            try
+            if(grid.ContainsKey(neighbourCoordinates))
             {
                 QueueNewNeighbours(neighbourCoordinates);
-            }
-            catch
-            {
-                // print("No block: " + neighbourCoordinates);
-            }
+            }            
         }
     }
 
@@ -83,7 +93,7 @@ public class Pathfinder : MonoBehaviour
         
     }
 
-    private void ColourStartAndEnd()
+    private void ColourStartAndEnd() //todo consider moving out to Waypoint.cs
     {
         startWaypoint.SetTopColour(Color.green);
         startWaypoint.isStart = true;
