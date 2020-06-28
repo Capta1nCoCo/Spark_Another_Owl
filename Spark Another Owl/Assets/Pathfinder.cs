@@ -22,8 +22,7 @@ public class Pathfinder : MonoBehaviour
     void Start()
     {
         LoadBlocks();
-        ColourStartAndEnd();
-        ExploreNeighbours();
+        ColourStartAndEnd();        
         Pathfind();
     }
 
@@ -31,13 +30,15 @@ public class Pathfinder : MonoBehaviour
     {
         queue.Enqueue(startWaypoint);
 
-        while(queue.Count > 0)
+        while(queue.Count > 0 && isRunning)
         {
-            var searchCenter = queue.Dequeue();
+            var searchCenter = queue.Dequeue();            
             print("Searching from: " + searchCenter); // todo remove log
             HaltIfEndFound(searchCenter);
-            
+            ExploreNeighbours(searchCenter);
+            searchCenter.isExplored = true;
         }
+        // todo work-out path!
         print("Finished pathfinding?");
     }
 
@@ -50,21 +51,38 @@ public class Pathfinder : MonoBehaviour
         }
     }
 
-    private void ExploreNeighbours()
+    private void ExploreNeighbours(Waypoint from)
     {
+        if (!isRunning) { return; }
         
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int explorationCoordinates = startWaypoint.GetGridPos() + direction;
+            Vector2Int neighbourCoordinates = from.GetGridPos() + direction;
             try
             {
-                grid[explorationCoordinates].SetTopColour(Color.yellow);
+                QueueNewNeighbours(neighbourCoordinates);
             }
             catch
             {
-                print("No block: " + explorationCoordinates);
+                // print("No block: " + neighbourCoordinates);
             }
         }
+    }
+
+    private void QueueNewNeighbours(Vector2Int neighbourCoordinates)
+    {
+        Waypoint neighbour = grid[neighbourCoordinates];
+        if (neighbour.isExplored)
+        {
+            // do nothing
+        }
+        else
+        {
+            neighbour.SetTopColour(Color.yellow);
+            queue.Enqueue(neighbour);
+            print("Queueing" + neighbour.name);
+        }
+        
     }
 
     private void ColourStartAndEnd()
