@@ -4852,6 +4852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToPan: {fileID: 8809602662248449773}
   targetEnemy: {fileID: 0}
+  shotFX: {fileID: 1559085902}
+  towerRange: 30
 --- !u!1 &8809602662248449770
 GameObject:
   m_ObjectHideFlags: 0

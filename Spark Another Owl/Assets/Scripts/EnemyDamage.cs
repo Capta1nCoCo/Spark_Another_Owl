@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCollisions : MonoBehaviour
+public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] GameObject deathFX;
     [SerializeField] GameObject dmgFX;
-    [SerializeField] int hits = 10;
+    [SerializeField] int hitPoints = 10;
+    public bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class EnemyCollisions : MonoBehaviour
     {
         ProcessHit();
 
-        if (hits <= 0)
+        if (hitPoints <= 0)
         {
             KillEnemy();
         }
@@ -33,13 +34,14 @@ public class EnemyCollisions : MonoBehaviour
 
     private void KillEnemy()
     {
+        isAlive = false;
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);        
-        Destroy(gameObject);
+        Destroy(gameObject);        
     }
 
     private void ProcessHit()
     {
-        hits = hits - 1;
+        hitPoints = hitPoints - 1;
         GameObject fx = Instantiate(dmgFX, transform.position, Quaternion.identity);        
     }
 
