@@ -8,7 +8,6 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] GameObject deathFX;
     [SerializeField] GameObject dmgFX;
     [SerializeField] int hitPoints = 10;
-    public bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +33,6 @@ public class EnemyDamage : MonoBehaviour
 
     private void KillEnemy()
     {
-        isAlive = false;
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);        
         Destroy(gameObject);        
     }

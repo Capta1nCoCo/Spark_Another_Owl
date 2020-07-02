@@ -3,7 +3,7 @@
 --- !u!1 &7699481568837279882
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7447736607484403972, guid: bbe4d9dedb8b29f488babe92dc4c94f0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
@@ -23,21 +23,21 @@ GameObject:
 --- !u!4 &7699481568837279883
 Transform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5405128704594218523, guid: bbe4d9dedb8b29f488babe92dc4c94f0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7699481568837279882}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -89.79286, y: 0.49488783, z: 50.06332}
   m_LocalScale: {x: 0.4887823, y: 0.48878205, z: 0.4887823}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &7699481568837279893
 MeshFilter:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7538309960903980846, guid: bbe4d9dedb8b29f488babe92dc4c94f0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7699481568837279882}
@@ -45,7 +45,7 @@ MeshFilter:
 --- !u!23 &7699481568837279892
 MeshRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2294589566049925947, guid: bbe4d9dedb8b29f488babe92dc4c94f0, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7699481568837279882}
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1f942410c83da4890b700fe04276b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 1.5
 --- !u!114 &7699481568837279895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,4 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbe0d3bc74495b4790718c6aeaa9904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hits: 10
+  deathFX: {fileID: 7992453795513967318, guid: 0312f269c149a4f4ba41d5a5e4c70b91, type: 3}
+  dmgFX: {fileID: 2101754987093850252, guid: dfcb52147e767bc4e85619d975fd9c2d, type: 3}
+  hitPoints: 10
