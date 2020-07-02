@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class MouseBuilder : MonoBehaviour
 {
+    public bool isPlaceble = true;
+    
     void OnMouseOver()
     {
-        // detect mouse click
-            // if clicked
-                print(gameObject.name + " clicked");
+        if (Input.GetMouseButtonDown(1))
+        {
+            print(gameObject.name + " clicked");
+        }                           
     }
 
-    void OnMouseExit()
+    /* void OnMouseExit()
     {
         print("Mouse is no longer on " + gameObject.name);
-    }
+    } */
 
 }

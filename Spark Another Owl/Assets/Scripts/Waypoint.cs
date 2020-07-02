@@ -8,6 +8,7 @@ public class Waypoint : MonoBehaviour
     // public is ok here as is a data class
     public bool isExplored = false;
     public Waypoint exploredFrom;
+    public bool isPathComponent = false;
 
     public bool isStart = false;
     public bool isEnd = false;
