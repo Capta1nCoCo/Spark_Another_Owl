@@ -45,13 +45,13 @@ public class Tower : MonoBehaviour
 
     }
 
-    private Transform GetClosest(Transform closestEnemy, Transform transform)
+    private Transform GetClosest(Transform closestEnemy, Transform nextEnemy)
     {
-        float distanceToCurrentTarget = Vector3.Distance(closestEnemy.position, gameObject.transform.position);
-        float distanceToNextTarget = Vector3.Distance(transform.position, gameObject.transform.position);
+        float distanceToCurrentTarget = Vector3.Distance(closestEnemy.position, transform.position);
+        float distanceToNextTarget = Vector3.Distance(nextEnemy.position, transform.position);
         if (distanceToNextTarget < distanceToCurrentTarget)
         {
-            return transform;
+            return nextEnemy;
         }
         return closestEnemy;
     }
