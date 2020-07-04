@@ -17,7 +17,8 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (GameObject enemyToSpawn in enemiesToSpawn)
         {
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            var spawnedEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
+            spawnedEnemy.transform.parent = gameObject.transform;
             yield return new WaitForSeconds(secondsBetweenSpawns);
         }        
     }   

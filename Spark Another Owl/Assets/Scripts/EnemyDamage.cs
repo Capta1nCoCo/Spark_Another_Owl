@@ -35,13 +35,12 @@ public class EnemyDamage : MonoBehaviour
     {
         ParticleSystem fx = Instantiate(deathParticle, transform.position, Quaternion.identity);
         fx.Play();
-        Destroy(gameObject);        
+        Destroy(gameObject);
     }
 
     private void ProcessHit()
     {
-        hitPoints = hitPoints - 1;
-        //GameObject fx = Instantiate(dmgFX, transform.position, Quaternion.identity);
+        hitPoints = hitPoints - 1;        
         dmgParticle.Play();
     }
 

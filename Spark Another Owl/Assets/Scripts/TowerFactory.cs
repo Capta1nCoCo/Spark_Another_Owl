@@ -33,7 +33,8 @@ public class TowerFactory : MonoBehaviour
         blockToBuildOn.isPlaceble = false;
 
         newTower.baseTowerBlock = blockToBuildOn;
-        
+        newTower.transform.parent = GameObject.Find("Towers").transform;
+
         towerQueue.Enqueue(newTower);        
     }
 
