@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerBasement : MonoBehaviour
+public class TowerBlock : MonoBehaviour
 {
     public bool isPlaceble = true;
      

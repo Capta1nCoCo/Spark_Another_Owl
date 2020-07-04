@@ -10,6 +10,8 @@ public class Tower : MonoBehaviour
     [SerializeField] ParticleSystem shotFX;
     [SerializeField] float towerRange = 30f;
 
+    public TowerBlock baseTowerBlock;
+
     // State
     Transform targetEnemy;
     
