@@ -11,7 +11,6 @@ public class TowerBasement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            print(gameObject.name + " clicked");
             PlaceATower();
         }                           
     }
