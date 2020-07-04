@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseBuilder : MonoBehaviour
+public class TowerBasement : MonoBehaviour
 {
-    [SerializeField] Tower towerPrefab;
     public bool isPlaceble = true;
-    
-
+     
     void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
@@ -22,14 +20,8 @@ public class MouseBuilder : MonoBehaviour
     {
         if (isPlaceble)
         {
-            Instantiate(towerPrefab, transform.position, Quaternion.identity);
-            isPlaceble = false;
+            FindObjectOfType<TowerFactory>().AddTower(this);
         }        
     }
-
-    /* void OnMouseExit()
-    {
-        print("Mouse is no longer on " + gameObject.name);
-    } */
 
 }
