@@ -79,6 +79,6 @@ public class Tower : MonoBehaviour
 
     private void LookAtEnemy()
     {
-        objectToPan.LookAt(targetEnemy);        
+        objectToPan.LookAt(targetEnemy);       
     }
 }

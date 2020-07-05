@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float secondsBetweenSpawns = 3f;
     [SerializeField] List<GameObject> enemiesToSpawn = new List<GameObject>();
     [SerializeField] Text scoreText;
+    [SerializeField] AudioClip spawnedEnemySFX;
     int enemyCounter = 0;    
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (GameObject enemyToSpawn in enemiesToSpawn)
         {
+            GetComponent<AudioSource>().PlayOneShot(spawnedEnemySFX);
             var spawnedEnemy = Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
             spawnedEnemy.transform.parent = gameObject.transform;
             AddScore();
